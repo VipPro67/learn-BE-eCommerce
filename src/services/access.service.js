@@ -25,37 +25,38 @@ class AccessService {
       });
 
       if (newShop) {
-        const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
-          modulusLength: 4096,
-          publicKeyEncoding: {
-            type: "spki",
-            format: "pem",
-          },
-          privateKeyEncoding: {
-            type: "pkcs8",
-            format: "pem",
-          },
-        });
-        const publicKeyString = await KeyTokenService.createKeyToken({
+        // const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
+        //   modulusLength: 4096,
+        //   publicKeyEncoding: {
+        //     type: "spki",
+        //     format: "pem",
+        //   },
+        //   privateKeyEncoding: {
+        //     type: "pkcs8",
+        //     format: "pem",
+        //   },
+        // });
+
+        const privateKey = crypto.randomBytes(64).toString("hex");
+        const publicKey = crypto.randomBytes(64).toString("hex");
+        
+        const keyStore = await KeyTokenService.createKeyToken({
           user: newShop._id,
           publicKey,
+          privateKey,
         });
 
-        if (!publicKeyString) {
+        if (!keyStore) {
           return {
             code: xxx,
             message: "Error while creating key token",
           };
         }
 
-        const publicKeyObject = crypto.createPublicKey(publicKey);
-
         const tokens = await createTokenPair(
           { userId: newShop._id, email: newShop.email },
-          privateKey,
-          publicKeyString
+          publicKey,privateKey
         );
-        console.log("Create Shop Success");
         return {
           code: 201,
           message: "Create Shop Success",
@@ -64,8 +65,7 @@ class AccessService {
               fileds: ["_id", "name", "email"],
               data: newShop,
             }),
-
-            tokens,
+            tokens: tokens,
           },
         };
       }

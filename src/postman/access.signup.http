@@ -1,9 +1,10 @@
 ### Sign up
 POST http://localhost:3001/api/v1/shop/signup
+x-api-key: 1fd0dc136ba2130f3d01ce5a4a02a65671b3a7762785ca465b16263e5244aec29a36ec5dee6b449213c65a52262cfb19a61aa44ad7fe924616fdaeac036af9e6
 content-type: application/json
 
 {
     "name": "sho1p",
-    "email": "shop01112111@gmail.com",
+    "email": "shop01231@gmail.com",
     "password": "123456"
 }

@@ -6,6 +6,14 @@ const crypto = require("crypto");
 const KeyTokenService = require("./keyToken.service");
 const { createTokenPair } = require("../auth/authUtils");
 const { getInfoData } = require("../untils");
+
+const ROLESHOP = {
+  SHOP: "0000",
+  WRITER: "0001",
+  EDITOR: "0002",
+  ADMIN: "0003",
+};
+
 class AccessService {
   static signUp = async ({ name, email, password }) => {
     try {
@@ -21,7 +29,7 @@ class AccessService {
         name,
         email,
         password: passwordHash,
-        roles: ["shop"],
+        roles: ["0000"],
       });
 
       if (newShop) {
@@ -39,7 +47,7 @@ class AccessService {
 
         const privateKey = crypto.randomBytes(64).toString("hex");
         const publicKey = crypto.randomBytes(64).toString("hex");
-        
+
         const keyStore = await KeyTokenService.createKeyToken({
           user: newShop._id,
           publicKey,
@@ -55,7 +63,8 @@ class AccessService {
 
         const tokens = await createTokenPair(
           { userId: newShop._id, email: newShop.email },
-          publicKey,privateKey
+          publicKey,
+          privateKey
         );
         return {
           code: 201,

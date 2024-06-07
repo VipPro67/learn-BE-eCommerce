@@ -14,7 +14,7 @@ const apiKey = async (req, res, next) => {
     if (!key) {
       return res
         .status(401)
-        .json({ message: "Unauthorized: Missing API key." }); 
+        .json({ message: "Unauthorized: Missing API key." });
     }
 
     const objKey = await findById(key);
@@ -28,7 +28,7 @@ const apiKey = async (req, res, next) => {
     req.objKey = objKey;
     return next();
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error" }); 
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -41,7 +41,7 @@ const permission = (permission) => {
         .json({ message: "Permission Denied: No permissions found." });
     }
 
-    const validPermission = req.objKey.permissions.includes(permission); 
+    const validPermission = req.objKey.permissions.includes(permission);
 
     if (!validPermission) {
       return res.status(403).json({ message: "Permission Denied" });
@@ -51,4 +51,10 @@ const permission = (permission) => {
   };
 };
 
-module.exports = { apiKey, permission };
+const asyncHandler = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+};
+
+module.exports = { apiKey, permission, asyncHandler };

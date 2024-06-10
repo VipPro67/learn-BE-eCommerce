@@ -1,9 +1,13 @@
 "use strict";
-const _ = require("lodash");
+const getInfoData = ({ fields = [], object = {} }) => {
+  const extractedData = {};
 
-const getInfoData = ({ fileds = [], data = {} }) => {
-  return _.pick(data, fileds);
+  fields.forEach((field) => {
+    if (object.hasOwnProperty(field)) {
+      extractedData[field] = object[field];
+    }
+  });
+
+  return extractedData;
 };
-module.exports = {
-  getInfoData,
-};
+module.exports = { getInfoData };

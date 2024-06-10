@@ -1,10 +1,20 @@
 ### Sign up
 POST http://localhost:3001/api/v1/shop/signup
-x-api-key: 1fd0dc136ba2130f3d01ce5a4a02a65671b3a7762785ca465b16263e5244aec29a36ec5dee6b449213c65a52262cfb19a61aa44ad7fe924616fdaeac036af9e6
+x-api-key: f72021dd595734a317e3dbaf349981bdecd23c208d67b41cca33c76e3835466f6e2db0f4dd7dfcc44c40bbd75c6dfa69ecd1977ccf5e75b64e85cbcf65e2b322
 content-type: application/json
 
 {
-    "name": "sho1p",
-    "email": "7@gmail.com",
+    "name": "1",
+    "email": "1@gmail.com",
+    "password": "1234156"
+}
+
+### Login
+POST http://localhost:3001/api/v1/shop/login
+x-api-key: f72021dd595734a317e3dbaf349981bdecd23c208d67b41cca33c76e3835466f6e2db0f4dd7dfcc44c40bbd75c6dfa69ecd1977ccf5e75b64e85cbcf65e2b322
+content-type: application/json
+
+{
+    "email": "1@gmail.com",
     "password": "1234156"
 }

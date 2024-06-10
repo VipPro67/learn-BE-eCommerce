@@ -44,8 +44,13 @@ class SuccessResponse {
 }
 
 class OK extends SuccessResponse {
-  constructor(message, metadata = {}) {
-    super(message, metadata);
+  constructor(
+    message = ReasonStatusCode.OK,
+    metadata = {},
+    code = StatusCode.OK,
+    reasonStatusCode = ReasonStatusCode.OK
+  ) {
+    super(message, code, reasonStatusCode, metadata);
   }
 }
 

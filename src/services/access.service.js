@@ -7,6 +7,7 @@ const KeyTokenService = require("./keyToken.service");
 const { createTokenPair } = require("../auth/authUtils");
 const { getInfoData } = require("../untils");
 const { BadRequestError } = require("../core/error.response");
+const { findShopByEmail } = require("./shop.service");
 
 const ROLESHOP = {
   SHOP: "0000",
@@ -16,6 +17,41 @@ const ROLESHOP = {
 };
 
 class AccessService {
+  static login = async ({ email, password, refeshtoken = null }) => {
+    const foundShop = await findShopByEmail({ email });
+    if (!foundShop) {
+      throw new BadRequestError("Error: Email not found, Shop not registered");
+    }
+    const comparePassword = await bcrypt.compare(password, foundShop.password);
+    if (!comparePassword) {
+      throw new BadRequestError("Error: Password not match");
+    }
+
+    const privateKey = crypto.randomBytes(64).toString("hex");
+
+    const publicKey = crypto.randomBytes(64).toString("hex");
+
+    const tokens = await createTokenPair(
+      { shopId: foundShop._id, email },
+      publicKey,
+      privateKey
+    );
+
+    await KeyTokenService.createKeyToken({
+      refreshToken: tokens.refreshToken,
+      publicKey: publicKey,
+      privateKey: privateKey,
+      user: foundShop,
+    });
+    return {
+      shop: getInfoData({
+        fields: ["_id", "name", "email"],
+        object: foundShop,
+      }),
+      tokens,
+    };
+  };
+
   static signUp = async ({ name, email, password }) => {
     try {
       const holderShop = await shopModel.findOne({ email }).lean();
@@ -50,11 +86,8 @@ class AccessService {
           user: newShop._id,
           publicKey,
           privateKey,
+          refreshToken: null,
         });
-
-        if (!keyStore) {
-          throw new BadRequestError("Error: Error when create KeyStore");
-        }
 
         const tokens = await createTokenPair(
           { userId: newShop._id, email: newShop.email },
@@ -65,7 +98,7 @@ class AccessService {
           message: "Success: Sign up success!",
           metadata: {
             shop: getInfoData({
-              fileds: ["_id", "name", "email"],
+              fields: ["_id", "name", "email"],
               data: newShop,
             }),
             tokens: tokens,
@@ -73,9 +106,6 @@ class AccessService {
         };
       }
     } catch (error) {
-
-
-
       throw new BadRequestError(error.message);
     }
   };

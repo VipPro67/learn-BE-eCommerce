@@ -2,7 +2,7 @@
 
 const AccessService = require("../services/access.service");
 
-const { Created } = require("../core/success.response");
+const { Created, OK } = require("../core/success.response");
 
 class AccessController {
   async signUp(req, res, next) {
@@ -14,5 +14,17 @@ class AccessController {
       next(error);
     }
   }
+
+  async login(req, res, next) {
+    try {
+      const { email, password } = req.body;
+      const result = await AccessService.login({ email, password });
+      console.log(result);
+      return new OK('Login Success', result).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
 }
 module.exports = new AccessController();

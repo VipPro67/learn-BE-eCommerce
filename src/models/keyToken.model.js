@@ -9,7 +9,7 @@ var keyTokenSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "Shop",
+      ref: "shops",
       required: true,
     },
 
@@ -21,13 +21,13 @@ var keyTokenSchema = new Schema(
       type: String,
       required: true,
     },
+    refreshToken: {
+      type: String,
+      require: true,
+    },
     refreshTokenUsed: {
       type: Array,
       default: [],
-    },
-    resreshToken: {
-      type: String,
-      require: true,
     },
   },
   {

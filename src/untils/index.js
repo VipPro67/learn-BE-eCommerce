@@ -1,13 +1,8 @@
 "use strict";
+//using lodash
+const _ = require("lodash");
 const getInfoData = ({ fields = [], object = {} }) => {
-  const extractedData = {};
-
-  fields.forEach((field) => {
-    if (object.hasOwnProperty(field)) {
-      extractedData[field] = object[field];
-    }
-  });
-
-  return extractedData;
+  return _.pick(object, fields);
 };
+
 module.exports = { getInfoData };

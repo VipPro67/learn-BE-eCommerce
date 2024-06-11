@@ -19,12 +19,17 @@ class AccessController {
     try {
       const { email, password } = req.body;
       const result = await AccessService.login({ email, password });
-      console.log(result);
-      return new OK('Login Success', result).send(res);
+      return new OK("Login Success", result).send(res);
     } catch (error) {
       next(error);
     }
   }
 
+  async logout(req, res, next) {
+    new OK({
+      message: "Logout success",
+      metadata: await AccessService.logout({ keyStore: req.keyStore }),
+    }).send(res);
+  }
 }
 module.exports = new AccessController();

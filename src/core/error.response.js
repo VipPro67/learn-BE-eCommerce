@@ -4,12 +4,14 @@ const StatusCode = {
   FOBIDDEN: 403,
   NOT_FOUND: 404,
   CONFLICT: 409,
+  UNAUTHORIZED: 401,
 };
 
 const ReasonStatusCode = {
   FOBIDDEN: "Forbidden error",
   NOT_FOUND: "Not Found",
   CONFLICT: "Conflict error",
+  UNAUTHORIZED: "Unauthorized",
 };
 
 class ErrorResponse extends Error {
@@ -45,8 +47,19 @@ class NotFoundError extends ErrorResponse {
   }
 }
 
+class UnauthorizedError extends ErrorResponse {
+  constructor(
+    message = ReasonStatusCode.UNAUTHORIZED,
+    statusCode = StatusCode.UNAUTHORIZED
+  ) {
+    super(message, statusCode);
+  }
+}
+
 module.exports = {
   ErrorResponse,
   ConflicRequestError,
   BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
 };

@@ -5,6 +5,18 @@ const AccessService = require("../services/access.service");
 const { Created, OK } = require("../core/success.response");
 
 class AccessController {
+  async handleRefreshToken(req, res, next) {
+    try {
+      const { refreshToken } = req.body;
+      const result = await AccessService.handleRefreshToken(
+        refreshToken
+      );
+      return new OK("Get token success", result).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async signUp(req, res, next) {
     try {
       const { name, email, password } = req.body;

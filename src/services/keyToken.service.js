@@ -27,6 +27,9 @@ class KeyTokenService {
         update,
         options
       );
+
+      console.log("tokens", tokens);
+
       return tokens ? tokens.publicKey : null;
     } catch (error) {
       throw new BadRequestError("Error: Create key token failed");
@@ -34,11 +37,27 @@ class KeyTokenService {
   };
 
   static getKeyTokenByUserId = async ({ userId }) => {
-    return await keyTokenModel.findOne({ user: new Types.ObjectId(userId) }).lean();
+    return await keyTokenModel
+      .findOne({ user: new Types.ObjectId(userId) })
+      .lean();
+  };
+
+  static findKeyByRefreshTokenUsed = async ({ refreshToken }) => {
+    return await keyTokenModel
+      .findOne({ refreshTokenUsed: refreshToken })
+      .lean();
+  };
+
+  static findKeyByRefreshToken = async ({ refreshToken }) => {
+    return await keyTokenModel.findOne({ refreshToken }).lean();
   };
 
   static removeKeyById = async ({ id }) => {
     return await keyTokenModel.deleteOne(id);
+  };
+
+  static deleteKeyByUserId = async ({ userId }) => {
+    return await keyTokenModel.findByIdAndDelete({ user: userId });
   };
 }
 

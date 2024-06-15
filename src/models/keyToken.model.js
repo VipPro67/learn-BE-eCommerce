@@ -12,7 +12,6 @@ var keyTokenSchema = new Schema(
       ref: "shops",
       required: true,
     },
-
     publicKey: {
       type: String,
       required: true,

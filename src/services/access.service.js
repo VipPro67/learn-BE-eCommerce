@@ -4,10 +4,11 @@ const shopModel = require("../models/shop.model");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const KeyTokenService = require("./keyToken.service");
-const { createTokenPair } = require("../auth/authUtils");
+const { createTokenPair, verifyJWT } = require("../auth/authUtils");
 const { getInfoData } = require("../untils");
-const { BadRequestError } = require("../core/error.response");
+const { BadRequestError, ForbiddenError } = require("../core/error.response");
 const { findShopByEmail } = require("./shop.service");
+const keyTokenModel = require("../models/keyToken.model");
 
 const ROLESHOP = {
   SHOP: "0000",
@@ -17,6 +18,62 @@ const ROLESHOP = {
 };
 
 class AccessService {
+  static handleRefreshToken = async (refreshToken) => {
+    const foundToken = await KeyTokenService.findKeyByRefreshTokenUsed(
+      refreshToken
+    );
+    if (foundToken) {
+      const { userId, email } = await verifyJWT(
+        refreshToken,
+        foundToken.publicKey
+      );
+
+      await KeyTokenService.deleteKeyByUserId({ userId });
+      throw new ForbiddenError(
+        "Error: Refresh token used, please login again!"
+      );
+    }
+
+    const holderToken = await KeyTokenService.findKeyByRefreshToken(
+      refreshToken
+    );
+    if (!holderToken) {
+      throw new ForbiddenError("Error: Refresh token not found");
+    }
+    const { userId, email } = await verifyJWT(
+      refreshToken,
+      holderToken.publicKey
+    );
+
+    const foundShop = await findShopByEmail({ email });
+    if (!foundShop) {
+      throw new ForbiddenError("Error: Shop not found");
+    }
+
+    const tokens = await createTokenPair(
+      { userId: foundShop._id, email },
+      holderToken.publicKey,
+      holderToken.privateKey
+    );
+
+    await holderToken.update({
+      $set: {
+        refreshToken: tokens.refreshToken,
+      },
+      $addToSet: {
+        refreshTokenUsed: refreshToken,
+      },
+    });
+
+    return {
+      shop: getInfoData({
+        fields: ["_id", "name", "email"],
+        object: foundShop,
+      }),
+      tokens,
+    };
+  };
+
   static signUp = async ({ name, email, password }) => {
     try {
       const holderShop = await shopModel.findOne({ email }).lean();
@@ -44,25 +101,23 @@ class AccessService {
           },
         });
 
-        let privateKeyString = privateKey.toString('base64');
-        let publicKeyString = publicKey.toString('base64');
-
-        
-        const keyStore = await KeyTokenService.createKeyToken({
-          user: newShop._id,
-          publicKey: publicKeyString,
-          privatekey: privateKeyString,
-          refreshToken: null,
-        });
-        if (!keyStore) {
-          throw new BadRequestError("Error: Key token not created");
-        }
+        let privateKeyString = privateKey.toString("base64");
+        let publicKeyString = publicKey.toString("base64");
 
         const tokens = await createTokenPair(
           { userId: newShop._id, email: newShop.email },
           publicKeyString,
           privateKeyString
         );
+        const keyStore = await KeyTokenService.createKeyToken({
+          user: newShop._id,
+          privateKey: privateKeyString,
+          publicKey: publicKeyString,
+          refreshToken: tokens.refreshToken,
+        });
+        if (!keyStore) {
+          throw new BadRequestError("Error: Key token not created");
+        }
         return {
           message: "Success: Sign up success!",
           metadata: {

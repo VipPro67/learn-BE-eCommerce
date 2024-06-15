@@ -23,7 +23,7 @@ const createTokenPair = async (payload, publicKey, privateKey) => {
 
     JWT.verify(accessToken, publicKey, (err, decode) => {
       if (err) console.log("Error verify :" + err);
-      else console.log("Decode verify :", decode);
+      else console.log("Decode verify :");
     });
     return { accessToken, refreshToken };
   } catch (error) {
@@ -67,4 +67,8 @@ const authenticateToken = asyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = { createTokenPair, authenticateToken };
+const verifyJWT = (token, publicKey) => {
+  return JWT.verify(token, publicKey);
+};
+
+module.exports = { createTokenPair, authenticateToken, verifyJWT};

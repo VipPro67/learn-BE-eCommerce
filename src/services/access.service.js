@@ -23,12 +23,9 @@ class AccessService {
       refreshToken
     );
     if (foundToken) {
-      const { userId, email } = await verifyJWT(
-        refreshToken,
-        foundToken.publicKey
-      );
+      const { userId, email } = verifyJWT(refreshToken, foundToken.publicKey);
 
-      await KeyTokenService.deleteKeyByUserId({ userId });
+      await KeyTokenService.deleteKeyByUserId(userId);
       throw new ForbiddenError(
         "Error: Refresh token used, please login again!"
       );
@@ -56,15 +53,10 @@ class AccessService {
       holderToken.privateKey
     );
 
-    await holderToken.update({
-      $set: {
-        refreshToken: tokens.refreshToken,
-      },
-      $addToSet: {
-        refreshTokenUsed: refreshToken,
-      },
+    await KeyTokenService.addRefreshTokenUsed({
+      refreshToken,
+      publicKey: holderToken.publicKey,
     });
-
     return {
       shop: getInfoData({
         fields: ["_id", "name", "email"],
@@ -159,7 +151,7 @@ class AccessService {
     let publicKeyString = publicKey.toString("base64");
 
     const tokens = await createTokenPair(
-      { shopId: foundShop._id, email },
+      { userId: foundShop._id, email },
       publicKeyString,
       privateKeyString
     );

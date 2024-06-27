@@ -53,7 +53,7 @@ const authenticateToken = asyncHandler(async (req, res, next) => {
 
   try {
     const decodeUser = JWT.verify(accessToken, keyStore.publicKey);
-    if (userId == decodeUser.userId) {
+    if (userId !== decodeUser.userId) {
       throw new UnauthorizedError("Error: UserId invalid");
     }
     req.keyStore = keyStore;

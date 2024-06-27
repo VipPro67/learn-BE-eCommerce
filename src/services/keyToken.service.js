@@ -1,6 +1,4 @@
 "use strict";
-
-const { token } = require("morgan");
 const keyTokenModel = require("../models/keyToken.model");
 const { BadRequestError } = require("../core/error.response");
 const { Types } = require("mongoose");
@@ -27,9 +25,6 @@ class KeyTokenService {
         update,
         options
       );
-
-      console.log("tokens", tokens);
-
       return tokens ? tokens.publicKey : null;
     } catch (error) {
       throw new BadRequestError("Error: Create key token failed");
@@ -42,22 +37,38 @@ class KeyTokenService {
       .lean();
   };
 
-  static findKeyByRefreshTokenUsed = async ({ refreshToken }) => {
+  static findKeyByRefreshTokenUsed = async (refreshToken) => {
     return await keyTokenModel
       .findOne({ refreshTokenUsed: refreshToken })
       .lean();
   };
 
-  static findKeyByRefreshToken = async ({ refreshToken }) => {
+  static findKeyByRefreshToken = async (refreshToken) => {
     return await keyTokenModel.findOne({ refreshToken }).lean();
+  };
+
+  static addRefreshTokenUsed = async ({ refreshToken, publicKey }) => {
+    return await keyTokenModel.updateOne(
+      { refreshToken },
+      { $push: { refreshTokenUsed: refreshToken } }
+    );
   };
 
   static removeKeyById = async ({ id }) => {
     return await keyTokenModel.deleteOne(id);
   };
 
-  static deleteKeyByUserId = async ({ userId }) => {
-    return await keyTokenModel.findByIdAndDelete({ user: userId });
+  static deleteKeyByUserId = async (userId) => {
+    try {
+      const deletedKey = await keyTokenModel.findOneAndDelete({
+        user: new Types.ObjectId(userId),
+      });
+      return deletedKey; // Return the deleted document (or null if not found)
+    } catch (error) {
+      // Handle errors appropriately, e.g., log the error or throw a custom exception
+      console.error("Error deleting key:", error);
+      throw error; // Re-throw the error to be handled by a higher-level error handler
+    }
   };
 }
 

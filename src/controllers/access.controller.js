@@ -8,10 +8,10 @@ class AccessController {
   async handleRefreshToken(req, res, next) {
     try {
       const { refreshToken } = req.body;
-      const result = await AccessService.handleRefreshToken(
-        refreshToken
+      const result = await AccessService.handleRefreshToken(refreshToken);
+      return new OK("Get token success by using refreshtoken", result).send(
+        res
       );
-      return new OK("Get token success", result).send(res);
     } catch (error) {
       next(error);
     }

@@ -36,7 +36,7 @@ const productSchema = new Schema(
     product_description: {
       type: String,
     },
-    product_atributes: {
+    product_attributes: {
       type: Schema.Types.Mixed,
       required: true,
     },
@@ -146,18 +146,18 @@ const furnitureSchema = new Schema(
   }
 );
 
-const Product = model(DOCUMENT_NAME, productSchema);
-const Clothes = model("Clothes", clothesSchema);
-const Food = model("Food", foodSchema);
-const Drink = model("Drink", drinkSchema);
-const Electronic = model("Electronic", electronicSchema);
-const Furniture = model("Furniture", furnitureSchema);
+const product = model(DOCUMENT_NAME, productSchema);
+const clothes = model("Clothes", clothesSchema);
+const food = model("Food", foodSchema);
+const drink = model("Drink", drinkSchema);
+const electronic = model("Electronic", electronicSchema);
+const furniture = model("Furniture", furnitureSchema);
 
 module.exports = {
-  Product,
-  Clothes,
-  Food,
-  Drink,
-  Electronic,
-  Furniture,
+  product,
+  clothes,
+  food,
+  drink,
+  electronic,
+  furniture,
 };

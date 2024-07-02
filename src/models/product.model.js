@@ -1,5 +1,5 @@
 "use strict";
-const e = require("express");
+const slugify = require("slugify");
 const { model, Schema, Types } = require("mongoose");
 
 const DOCUMENT_NAME = "Product";
@@ -19,6 +19,9 @@ const productSchema = new Schema(
       type: Types.ObjectId,
       ref: "Shop",
       required: true,
+    },
+    product_slug: {
+      type: String,
     },
     product_price: {
       type: Number,
@@ -40,12 +43,40 @@ const productSchema = new Schema(
       type: Schema.Types.Mixed,
       required: true,
     },
+    product_ratingAvg: {
+      type: Number,
+      default: 4.5,
+      min: [0, "Rating must be at least 0"],
+      max: [5, "Rating must not exceed 5"],
+      set: (value) => Math.round(value * 10) / 10,
+    },
+    product_variations: {
+      type: Array,
+      default: [],
+    },
+    isDraft: {
+      type: Boolean,
+      default: true,
+      index: true,
+      select: false,
+    },
+    isPublished: {
+      type: Boolean,
+      default: false,
+      index: true,
+      select: false,
+    },
   },
   {
     timestamps: true,
     collection: COLLECTION_NAME,
   }
 );
+
+productSchema.pre("save", function (next) {
+  this.product_slug = slugify(this.product_name, { lower: true });
+  next();
+});
 
 const clothesSchema = new Schema(
   {

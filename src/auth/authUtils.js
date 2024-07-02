@@ -56,7 +56,11 @@ const authenticateToken = asyncHandler(async (req, res, next) => {
     if (userId !== decodeUser.userId) {
       throw new UnauthorizedError("Error: UserId invalid");
     }
-    req.keyStore = keyStore;
+    req.keyStore = {
+      userId: decodeUser.userId,
+      publicKey: keyStore.publicKey,
+      refreshToken: keyStore.refreshToken,
+    };
     return next();
   } catch (error) {
     if (error.name === "JsonWebTokenError") {
@@ -71,4 +75,4 @@ const verifyJWT = (token, publicKey) => {
   return JWT.verify(token, publicKey);
 };
 
-module.exports = { createTokenPair, authenticateToken, verifyJWT};
+module.exports = { createTokenPair, authenticateToken, verifyJWT };

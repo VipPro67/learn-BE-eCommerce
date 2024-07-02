@@ -49,7 +49,7 @@ authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
 {
-  "product_name": "Nike Air Max 90",
+  "product_name": "Nike Air Max 99",
   "product_thumbnail": "https://example.com/airmax90.jpg",
   "product_shop": "{{SHOPID}}",
   "product_price": 120.00,
@@ -71,13 +71,13 @@ x-client-id : {{SHOPID}}
 authorization : {{ACCESSTOKEN}}
 
 ### publish product by id
-POST http://localhost:3001/api/v1/product/published/668406dd4e9d6a1968d519b2
+POST http://localhost:3001/api/v1/product/published/66842e21a162a09f714d84b1
 x-api-key : {{APIKEY}}
 x-client-id : {{SHOPID}}
 authorization : {{ACCESSTOKEN}}
 
 ### unpublish product by id
-POST http://localhost:3001/api/v1/product/unpublished/668406dd4e9d6a1968d519b2
+POST http://localhost:3001/api/v1/product/unpublished/66842e21a162a09f714d84b1
 x-api-key : {{APIKEY}}
 x-client-id : {{SHOPID}}
 authorization : {{ACCESSTOKEN}}
@@ -89,3 +89,22 @@ GET http://localhost:3001/api/v1/product/published/all
 x-api-key : {{APIKEY}}
 x-client-id : {{SHOPID}}
 authorization : {{ACCESSTOKEN}}
+
+### search product by name,discription
+GET http://localhost:3001/api/v1/product/search/nike 90
+x-api-key : {{APIKEY}}
+
+### get product by id
+GET http://localhost:3001/api/v1/product/66842d2af1246df516b03a3c
+x-api-key : {{APIKEY}}
+
+### get all products
+GET http://localhost:3001/api/v1/product/all
+x-api-key : {{APIKEY}}
+
+### update product by id
+PUT http://localhost:3001/api/v1/product/66842e21a162a09f714d84b1
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+

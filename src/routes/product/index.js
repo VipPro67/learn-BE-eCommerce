@@ -5,6 +5,15 @@ const ProductController = require("../../controllers/product.controller");
 const { asyncHandler } = require("../../auth/checkAuth");
 const { authenticateToken } = require("../../auth/authUtils");
 
+router.get(
+  "/search/:keysearch",
+  asyncHandler(ProductController.searchProductsUser)
+);
+
+router.get("/all", asyncHandler(ProductController.findAllProducts));
+
+router.get("/:product_id", asyncHandler(ProductController.findProductById));
+
 //authen
 router.use(authenticateToken);
 
@@ -22,5 +31,7 @@ router.get(
   "/published/all",
   asyncHandler(ProductController.getAllPublicProductByShop)
 );
+
+router.put("/:product_id", asyncHandler(ProductController.updateProduct));
 
 module.exports = router;

@@ -1,7 +1,7 @@
 "use strict";
 
 const ProductService = require("../services/product.service");
-const { Created, OK } = require("../core/success.response");
+const { Created, OK, SuccessResponse } = require("../core/success.response");
 
 class ProductController {
   async createProduct(req, res, next) {
@@ -62,9 +62,9 @@ class ProductController {
     }
   }
 
-  // async getProductById(req, res, next) {
+  // async findProductById(req, res, next) {
   //   try {
-  //     const product = await ProductService.getProductById(
+  //     const product = await ProductService.findProductById(
   //       req.params.product_id
   //     );
   //     new OK("Get product by id success", product).send(res);
@@ -72,6 +72,49 @@ class ProductController {
   //     next(error);
   //   }
   // }
+
+  async searchProductsUser(req, res, next) {
+    try {
+      const products = await ProductService.searchProductsUser({
+        keysearch: req.params.keysearch,
+      });
+      new OK("Search products success", products).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async findAllProducts(req, res, next) {
+    try {
+      const products = await ProductService.findAllProducts(req.query);
+      new OK("Get all products success", products).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async updateProduct(req, res, next) {
+    try {
+      const product = await ProductService.updateProduct(
+        req.params.product_id,
+        req.body
+      );
+      new OK("Update product success", product).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async findProductById(req, res, next) {
+    try {
+      const product = await ProductService.findProductById({
+        product_id: req.params.product_id,
+      });
+      new OK("Get product by id success", product).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new ProductController();

@@ -78,6 +78,9 @@ productSchema.pre("save", function (next) {
   next();
 });
 
+//create index for search
+productSchema.index({ product_name: "text", product_description: "text" });
+
 const clothesSchema = new Schema(
   {
     size: {

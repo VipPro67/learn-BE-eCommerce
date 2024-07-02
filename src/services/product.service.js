@@ -14,6 +14,10 @@ const {
   publicProductByShop,
   findAllPublicProductByShop,
   unPublicProductByShop,
+  searchProductsUser,
+  updateProduct,
+  findProductById,
+  findAllProducts,
 } = require("../models/repositories/product.repo");
 
 class ProductFactory {
@@ -33,6 +37,8 @@ class ProductFactory {
         throw new BadRequestError("Error: Invalid product type", type);
     }
   }
+
+  static async updateProduct({ product_id, data }) {}
 
   static async findAllDraftForShop({ product_shop, limit = 60, skip = 0 }) {
     const query = { product_shop, isDraft: true };
@@ -54,6 +60,32 @@ class ProductFactory {
   }) {
     const query = { product_shop, isDraft: false, isPublished: true };
     return await findAllPublicProductByShop({ query, limit, skip });
+  }
+
+  static async searchProductsUser({ keysearch }) {
+    return await searchProductsUser({ keysearch });
+  }
+
+  static async findAllProducts({
+    limit = 60,
+    sort = "ctime",
+    page = 1,
+    filter = { isPublished: true },
+  }) {
+    return await findAllProducts({
+      limit,
+      sort,
+      page,
+      filter,
+      select: ["product_name", "product_thumbnail", "product_price"],
+    });
+  }
+
+  static async findProductById({ product_id }) {
+    return await findProductById({
+      product_id,
+      unSelect: ["__v", "product_variations"],
+    });
   }
 }
 

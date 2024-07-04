@@ -51,18 +51,18 @@ authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
 {
-  "product_name": "Nike Air Max 99",
-  "product_thumbnail": "https://example.com/airmax90.jpg",
+  "product_name": "Gucci Bag",
+  "product_thumbnail": "https://example.com/gucci-bag.jpg",
   "product_shop": "{{SHOPID}}",
   "product_price": 120.00,
   "product_quantity": 35,
   "product_type": "clothes",
-  "product_description": "Iconic running shoes with classic design.",
+  "product_description": "Gucci Bag",
   "product_attributes": {
-    "size": "US 9",
-    "color": "Black/White",
-    "material": "Leather/Mesh",
-    "brand": "Nike"
+    "size": "US 8",
+    "color": "black",
+    "material": "leather",
+    "brand": "Gucci"
   }
 }
 

@@ -21,6 +21,7 @@ const {
   findAllProducts,
 } = require("../models/repositories/product.repo");
 const { remove } = require("lodash");
+const { insertInventory } = require("../models/repositories/inventory.repo");
 
 class ProductFactory {
   static getProductClass(type) {
@@ -49,7 +50,7 @@ class ProductFactory {
     return await newProduct.createProduct();
   }
 
-  static async updateProductById({ type, product_id,shop_id, payload }) {
+  static async updateProductById({ type, product_id, shop_id, payload }) {
     const productClass = this.getProductClass(type);
 
     if (!productClass) {
@@ -134,13 +135,22 @@ class Product {
   }
 
   async createProduct(product_id) {
-    return await product.create({
+    const newProduct = await product.create({
       ...this,
       _id: product_id,
     });
+
+    if (newProduct) {
+      await insertInventory({
+        productId: product_id,
+        shopId: this.product_shop,
+        stock: this.product_quantity,
+      });
+    }
+    return newProduct;
   }
 
-  async updateProductById({ product_id,shop_id, bodyUpdate }) {
+  async updateProductById({ product_id, shop_id, bodyUpdate }) {
     return await updateProductById({
       product_id: product_id,
       shop_id: shop_id,
@@ -164,7 +174,7 @@ class Clothes extends Product {
     return newProduct;
   }
 
-  async updateProductById({ product_id, shop_id}) {
+  async updateProductById({ product_id, shop_id }) {
     const objectParams = updateNestedObject(this);
     if (objectParams.product_attributes) {
       await updateProductById({

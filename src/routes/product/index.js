@@ -32,6 +32,6 @@ router.get(
   asyncHandler(ProductController.getAllPublicProductByShop)
 );
 
-router.put("/:product_id", asyncHandler(ProductController.updateProduct));
+router.patch("/:product_id", asyncHandler(ProductController.updateProductById));
 
 module.exports = router;

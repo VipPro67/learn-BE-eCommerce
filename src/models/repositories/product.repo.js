@@ -35,14 +35,6 @@ const findProductById = async ({ product_id, unSelect }) => {
     .exec();
 };
 
-const updateProduct = async ({ product_id, data }) => {
-  const foundProduct = await product.findOne({ _id: product_id });
-  if (!foundProduct) {
-    throw new BadRequestError("Product not found");
-  }
-  return await product.updateOne({ _id: product_id }, data);
-};
-
 const findAllDraftForShop = async ({ query, limit, skip }) => {
   return await product
     .find(query)
@@ -107,6 +99,32 @@ const searchProductsUser = async ({ keysearch }) => {
     .exec();
 };
 
+const updateProductById = async ({
+  product_id,
+  shop_id,
+  bodyUpdate,
+  model,
+  isNew = true,
+}) => {
+  //check product shop is same with shop_id
+  console.log(product_id, shop_id);
+  const foundProduct = await model.findOne({
+    _id: product_id,
+    product_shop: shop_id,
+  });
+  if (!foundProduct) {
+    throw new BadRequestError("Product not found or not belong to shop");
+  }
+  return await model.findOneAndUpdate(
+    {
+      _id: product_id,
+    },
+    bodyUpdate,
+    {
+      new: isNew,
+    }
+  );
+};
 module.exports = {
   findAllDraftForShop,
   publicProductByShop,
@@ -115,5 +133,5 @@ module.exports = {
   searchProductsUser,
   findAllProducts,
   findProductById,
-  updateProduct,
+  updateProductById,
 };

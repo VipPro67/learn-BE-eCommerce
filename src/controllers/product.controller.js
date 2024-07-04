@@ -1,7 +1,7 @@
 "use strict";
 
 const ProductService = require("../services/product.service");
-const { Created, OK, SuccessResponse } = require("../core/success.response");
+const { Created, OK } = require("../core/success.response");
 
 class ProductController {
   async createProduct(req, res, next) {
@@ -93,12 +93,14 @@ class ProductController {
     }
   }
 
-  async updateProduct(req, res, next) {
+  async updateProductById(req, res, next) {
     try {
-      const product = await ProductService.updateProduct(
-        req.params.product_id,
-        req.body
-      );
+      const product = await ProductService.updateProductById({
+        product_id: req.params.product_id,
+        shop_id: req.keyStore.userId,
+        type: req.body.product_type,
+        payload: req.body,
+      });
       new OK("Update product success", product).send(res);
     } catch (error) {
       next(error);

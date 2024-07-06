@@ -1,6 +1,5 @@
-@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMDgzMjExLCJleHAiOjE3MjAxNjk2MTF9.KLRbnfyFTXcSm3cqZykL1fEvPqLzIifruiEOQc5iSLGfz3z2U30kUwY2wiV3gnqgfXZQ5IYw9f_R5muRuuPJUEDAntmBX2SX6J2jcugs7yBR0bKS2MYv_xlqutI4wvdXQvnKmpzbVyJOZRWQI3cRrgielMNhulbZ2tGB7v18INkZAu188dqj82WgUIxPPdkcW3dgygGf0mXSJRu4x-1JXQjYGnMB39scY27BliqJ4qjL8Z7FrLCmhjPCXDrySomHP9_b94Jcp_4zJdI_y1ut0t3hMWXT-Hm46tHxIncvjCk-CwX-zzvsJXXuT2XbqMSCb78f2BvlchooKmv0lC56gqxZI4SNk747A31GGjxSYG6o5XtiO_FJhEtKBhzsuNU1h2509SR9h1rPUMdX1vcUMedNY-2Qgd2felN9907FRG2GmFUp0GotciOQ2SnCrShCyvxsMY_ET_HUuvw92xWTG_ssSMOJ6NY088klhUx6EX77Wh9OLp68_KGMua9m-_ScounkgoGNJv0lku8fLYWC21fIq5COUDK-2IIlTSLM4jtUZif927dNqosWsuJYG2iwHRflSi-G1AkubanAIunNPkAtFoW8z-CD3Bea8_ZpKB6BwP4E8KSxMron6lgMYkv_lR4X47GyLjs7KEXD6nKrp2e5dRZVSMZ5EgC7KhUKoxY
-
-@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMDgzMjExLCJleHAiOjE3MjEyOTI4MTF9.m5L94aAvkIZFPMgqOoU6LkWVQ7wcWD1gR4bfEsCUSAmwfjQ9Nw53uiZ1RsoCPcJjHOKr43TOyTs6KlLs2q117f--fgwPyTkJXSnuIijPuAGwBlnahuUYSF8JRJ0fYuIv6XPtDcaWt6h3PMKuzEq32NWbOy5yMDBzK3f4PsDkgCs0t8ALOIJi7bpD_oftL57m8U4wPJO-nKe9XhzrNb1zJxnq_8N_-gjhEc7_uvuDeNL0ye9B0YT8PaBrBxE8AWeDeO2_gsTlpMTD2m4s7i0pMFPnUgSx_VlM6YP3VOMexuyBn_6bBM-evwcEKZBmb6SX0jLZ5fceqqDTlhGxrbiFRPJfMw06d8HVxkLXnFcR3Li7WMfY6bcFEDa1sT2uMlSUJx_UpzV49MPD2V8RLDR-nQPvzrdrgVxl_7KhuMPdyU7hkuYTRca1uWuRi6JKDNy7v6IKB-osmlYyM861WPkBQytPLeinKLWgKg1jgdeZikVg573K-YdMfC5LVof0eR1cFOhkPM61mrhP7SanOMLjOdKFI2WWai37O3uhTDzttnwBpDO8SnmepBcbluMx9JKvvShWARYuxOJjRnlRS4m0OBF7vZoKMt8URDZiHzh3UzITbpqLRcQuEu9lb9Auuc364ed3U587GEHf3KZi5Moubz2jJRhl53xX7Diwqodv_f4
+@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMjUxNzY5LCJleHAiOjE3MjAzMzgxNjl9.ay6vL5dPTheneHEc8HsSSznQ0JUh5XQ9G4rkEVyv1sgCn7XfJdZo8g9RMFpBQZ2wCbK1u_efEM0DUQXlb-VVI3MCaNJpmvbZtTxr98-yyLQ5hf3jTaCaek3h3WjXP64Ld1dNoOi9SpYzFeD2FiZm6wr96TNSMIQwzKBCW-6RCb7BDWi360gZ1ekbf5I6ZvV1-wahLgA9NoBCUm0zuijIfmFa74YpDR_3fOBH0eB5c31Gj8F_FM2wFf2eeYhzN8QhSbT8-fDm7MoAEo4nu1EpbWdtfXiZUNFjex0gmCaoWt0ASAIciuOqkfYQVSS2425hd7tl3plQMY4dqYKvs3m7Pe7pgKNFBIScC9QsDw_eKLfa5NS-SewxG0ZLDy1I3Lknfrkr4acIfX8vp_jwaP4V2H7ZDmbEFVwMPNLeDnF7sZxXNq6CTt9NIVnA1YJFwYTJS2MmmnOc3OfrEhiXFUL7nPAeS560XcxZKAsJ9tYkzQ64vLdrjTM7hqJfyrmJjfXDIQDH5G4jliShbQrCP6O7Dbv6SZEzfoAKmLaONO3bqPTarhxFkw9XtfLVJ2q5q-vQkYfLpNvoBcHGWnBUsFQ-oAENbfu09-96lPARCRskbDvJHKJUgKQ-fid5qtU0N9PdAqW2cnduqm4JTyNsUylxiXpeu1abXXXZvKcUXrfRxP4
+@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMjUxNzY5LCJleHAiOjE3MjE0NjEzNjl9.dycHbWxoaIg6o7FYmw-fjjq6_nYVTUBhKtzPA2qZ9KlnjOZHeGs3qeXIBCPTCAtHkWids6WY4SytLmPdbJ5zxuFUPiAYUWbO1ZwnlTLk1MWniD5vo3H7ZlGGvUqdBignDBZldWheqk7l47kkp5HiF33rbmYz4Wy_eXC-cvldFnb5AKEEBgEsmfdyswdkTshQ-wuow1kX9HWSqxKBy9z6PwRO8j0VgZGkYqSJGZIbCamVt7VvKJhDaz6VSz9SCqf7NTsEDgSs_v0eHtV70nabu8GF_D56-zF4uxhCjxWYVIEEd6ZD4zig4iLJWGejtnjT2NySII03H4YWstEJsDnTR4f1LJnDcsdMv0uD9DJ7R8md_aEe2aYhQp3vZUWXdMtxSirkglKYny5XD4vvZ6vzc3k7lo06d3T9gOl0rBB8B9vAglUPuror7PMFFVb14DXBmGmD7i48sg5CqfG-fuBRZrz4_ifDBbQyfKapdvIzbey1CCJJuDqSyiFMU8A3ZY3BeFVyzWw9Wm10gwooNSiXJ16a6xjwzkrFtnRvto_WqD5fJLMP8Wvo8RDmOOMnfgVnN2J82GTy64LcbxkCvMT0bd4AaOMokxKx_vwglS3mSPD0MEIb5Cadr1SSiU9oqN_qz9V_oTW6eUJE6HkjZSKDTCrCmeS7numFix9pqOB2apU
 
 @APIKEY = fffbff1907f9fd6c85428a77850851fcdb791963dc660f341d04d7829507e08efcb63ba8037b4e8c6f967e1e5dab3ae81cde008fb88969c0cd18a66a54df8cec
 
@@ -51,13 +50,13 @@ authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
 {
-  "product_name": "Gucci Bag",
-  "product_thumbnail": "https://example.com/gucci-bag.jpg",
+  "product_name": "Gucci Bag 1",
+  "product_thumbnail": "https://example.com/gucci-bag.jpg 1",
   "product_shop": "{{SHOPID}}",
   "product_price": 120.00,
   "product_quantity": 35,
   "product_type": "clothes",
-  "product_description": "Gucci Bag",
+  "product_description": "Gucci Bag 1",
   "product_attributes": {
     "size": "US 8",
     "color": "black",
@@ -118,3 +117,81 @@ content-type: application/json
     "size": "US 9"
   }
 }
+
+### create discount
+POST http://localhost:3001/api/v1/discount/create
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "discount_name": "Birth Sale",
+  "discount_code": "Birth2024",
+  "discount_description": "Birth Sale 2024",
+  "discount_shop": "{{SHOPID}}",
+  "discount_type": "percentage",
+  "discount_value": 20,
+  "discount_apply_on": "product",
+  "discount_product_ids": ["66891a628bddb3f5cb89fa94","66891a418bddb3f5cb89fa8c"],
+  "discount_min_order_value": 100,
+  "discount_max_usage": 100,
+  "discount_start_date": "2024-07-01",
+  "discount_end_date": "2024-07-31"
+}
+
+### update discount
+PATCH  http://localhost:3001/api/v1/discount/Birth2024
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "discount_name": "Birth Sale 2024",
+  "discount_description": "Birth Sale 2024 Sieu Cap Vip Pro"
+}
+
+### get shop discounts
+GET http://localhost:3001/api/v1/discount/all
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+
+### get product by discount code id
+GET http://localhost:3001/api/v1/discount/products
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "discount_code": "Birth2024",
+  "discount_shopId": "{{SHOPID}}"
+}
+
+### get amount order
+GET http://localhost:3001/api/v1/discount/amount
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "discount_code": "Birth2024",
+  "discount_shopId": "{{SHOPID}}",
+  "products": [
+    {
+      "product_id": "66891a628bddb3f5cb89fa94",
+      "product_price": 120,
+      "product_quantity": 2
+    },
+    {
+      "product_id": "66891a628bddb3f5cb89fa94",
+      "product_price": 120,
+      "product_quantity": 1
+    }
+  ]
+}
+
+

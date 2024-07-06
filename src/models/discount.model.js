@@ -27,6 +27,10 @@ const discountsSchema = new Schema(
       type: String,
       required: true,
     },
+    discount_min_order_value: {
+      type: Number,
+      required: true,
+    },
     discount_start_date: {
       type: Date,
       required: true,
@@ -44,6 +48,11 @@ const discountsSchema = new Schema(
       type: Number,
       required: true,
       default: 0,
+    },
+    discount_max_usage_per_user: {
+      type: Number,
+      required: true,
+      default: 0, //0 mean no limit
     },
     discount_user_usage: {
       type: Array,
@@ -64,7 +73,7 @@ const discountsSchema = new Schema(
       required: true,
       enum: ["all", "type", "product"],
     },
-    discount_product_list: {
+    discount_product_ids: {
       type: Array,
       default: [],
     },
@@ -77,5 +86,5 @@ const discountsSchema = new Schema(
 );
 
 module.exports = {
-  discount: model(DOCUMENT_NAME, inventorySchema),
+  discount: model(DOCUMENT_NAME, discountsSchema, COLLECTION_NAME),
 };

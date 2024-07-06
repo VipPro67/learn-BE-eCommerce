@@ -16,7 +16,6 @@ const findAllProducts = async ({ limit, sort, page, filter, select }) => {
   const query = {
     ...filter,
   };
-  console.log(getSelectFields({ fields: select }));
   return await product
     .find(query)
     .sort(sort === "ctime" ? { _id: 1 } : { _id: -1 })

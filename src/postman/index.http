@@ -1,5 +1,5 @@
-@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMjUxNzY5LCJleHAiOjE3MjAzMzgxNjl9.ay6vL5dPTheneHEc8HsSSznQ0JUh5XQ9G4rkEVyv1sgCn7XfJdZo8g9RMFpBQZ2wCbK1u_efEM0DUQXlb-VVI3MCaNJpmvbZtTxr98-yyLQ5hf3jTaCaek3h3WjXP64Ld1dNoOi9SpYzFeD2FiZm6wr96TNSMIQwzKBCW-6RCb7BDWi360gZ1ekbf5I6ZvV1-wahLgA9NoBCUm0zuijIfmFa74YpDR_3fOBH0eB5c31Gj8F_FM2wFf2eeYhzN8QhSbT8-fDm7MoAEo4nu1EpbWdtfXiZUNFjex0gmCaoWt0ASAIciuOqkfYQVSS2425hd7tl3plQMY4dqYKvs3m7Pe7pgKNFBIScC9QsDw_eKLfa5NS-SewxG0ZLDy1I3Lknfrkr4acIfX8vp_jwaP4V2H7ZDmbEFVwMPNLeDnF7sZxXNq6CTt9NIVnA1YJFwYTJS2MmmnOc3OfrEhiXFUL7nPAeS560XcxZKAsJ9tYkzQ64vLdrjTM7hqJfyrmJjfXDIQDH5G4jliShbQrCP6O7Dbv6SZEzfoAKmLaONO3bqPTarhxFkw9XtfLVJ2q5q-vQkYfLpNvoBcHGWnBUsFQ-oAENbfu09-96lPARCRskbDvJHKJUgKQ-fid5qtU0N9PdAqW2cnduqm4JTyNsUylxiXpeu1abXXXZvKcUXrfRxP4
-@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwMjUxNzY5LCJleHAiOjE3MjE0NjEzNjl9.dycHbWxoaIg6o7FYmw-fjjq6_nYVTUBhKtzPA2qZ9KlnjOZHeGs3qeXIBCPTCAtHkWids6WY4SytLmPdbJ5zxuFUPiAYUWbO1ZwnlTLk1MWniD5vo3H7ZlGGvUqdBignDBZldWheqk7l47kkp5HiF33rbmYz4Wy_eXC-cvldFnb5AKEEBgEsmfdyswdkTshQ-wuow1kX9HWSqxKBy9z6PwRO8j0VgZGkYqSJGZIbCamVt7VvKJhDaz6VSz9SCqf7NTsEDgSs_v0eHtV70nabu8GF_D56-zF4uxhCjxWYVIEEd6ZD4zig4iLJWGejtnjT2NySII03H4YWstEJsDnTR4f1LJnDcsdMv0uD9DJ7R8md_aEe2aYhQp3vZUWXdMtxSirkglKYny5XD4vvZ6vzc3k7lo06d3T9gOl0rBB8B9vAglUPuror7PMFFVb14DXBmGmD7i48sg5CqfG-fuBRZrz4_ifDBbQyfKapdvIzbey1CCJJuDqSyiFMU8A3ZY3BeFVyzWw9Wm10gwooNSiXJ16a6xjwzkrFtnRvto_WqD5fJLMP8Wvo8RDmOOMnfgVnN2J82GTy64LcbxkCvMT0bd4AaOMokxKx_vwglS3mSPD0MEIb5Cadr1SSiU9oqN_qz9V_oTW6eUJE6HkjZSKDTCrCmeS7numFix9pqOB2apU
+@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwNTAxOTU4LCJleHAiOjE3MjA1ODgzNTh9.sAYsnfSDqYO6n-ywHew-fJ1BQiz__R67xHALW8cvu4BuNXFg3cBYa0pAevgiOg8LYgvmQRpyzUUbcuqgTw6Rzw3IiadRnct8fgjSMUaFGeeRh_873uHHxUZXxOIC-MVGdjZ2d7SOViaImiN2pBh1j6NykNvGHiZs94dMvYPowqoS0cly7KWRqmEzISglqmmi5PvPcOyKxFK5Mqf_ZtAdW2Xs6n6r8TtN-486wKTqBBB0yg3EEdAPs8YOHB8Kisg3m4n34htGtEH9uuXAqu9FwXCBcRLmme5_ZcEyQsbj-GWjyrPhpS3u60JN-A0RKpgb6ShrujdMcPJKQwNPlPPoLkAzcdvfNER3G4FLQ_OGNl-egxY39RZWbLCLBtk9oLj61GuPWLwFwDwLsIF8DxWpEAK5zSttP5dVggtpBRpNkk_bNreHr8KPt9KrvOlJzG96BKgb3HcrTsLyzd7KymN5yQSSsWo3xgbPqAlLRuK647JDPfd5z-9kJQMKA4wL7Tl1KKJy4d8FZ061JM8rh_LUgl_e00bgBS32atPgc1BWIMFv3AHTjjIXjuRcpob2zFI60TRGKEWVxOfNFEKQTExoEdYWYNmxfAIBn8qhX6Ej6F9oBM0SKOXQ8WQxnfdJjHo-9oHsem_jVR71OXA3iDVEZW6NTyuFTF3Nmj60ox4m_bc
+@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwNTAxOTU4LCJleHAiOjE3MjE3MTE1NTh9.PqwF6vLz_GGeLJ6VlEAJGeVQjp0DzANttpAa4zCV6tqpoTKLYgF3HhDvYchteA82brzY2g_1ngXir1Pb2FxDImaAUq7sTa5T48UEsA7DRJJu1baUQmL-jq_UMZcCgmmjBzlQoPqw2xs9TALw1gE-tYp2ifwkY8cap0HpS3Z9wMIN3w0nCNJssI3dnX4ODokEKcRbIdRRiAKP3hkN2TrrITiZkAlf86SYtdNHhEnYZ_aW4ag-mivdx0teTk5uV5DoUkdRdjtUGZ3Gg0LdUD_I059YcR83VmB2QtGAh0hez_nFFHvKuUvPt8A2j4PawSThfFSdPF7Xh9P3MkW2jZ-bzriDUeHbCxErFO1P1QnPHTvNb8hNx9-nQe7sPVpGlkgpY4dypxh_qDJyTQsydqYoh1RFHpKvOGtgRho4wgf-gDI2b-1nWZDRmzNuJzDUN1oqOZ5MPH0fXkGmTqGBgA2UTZ7cm7EzWWfr3KxVN0cUwlwzJ2FN5phJz7mpve-xttpHrH7dtPQ7Zpje80RN0WcCDtJo5u_jgLie_TEBppcn_v81SH_Yu6J86_fLwxJLeHQ51QMyKHveIkp7m14c5WEM8MV4dFdiadXE6hnid1hIYEf2OoffhEEErwIgo0_LeWD0Vtq3WZcQMbEH3JqO-0uE11HIvhKeUwnjH9x8E3SfJvI
 
 @APIKEY = fffbff1907f9fd6c85428a77850851fcdb791963dc660f341d04d7829507e08efcb63ba8037b4e8c6f967e1e5dab3ae81cde008fb88969c0cd18a66a54df8cec
 
@@ -194,4 +194,56 @@ content-type: application/json
   ]
 }
 
+### add product to cart
+POST http://localhost:3001/api/v1/cart/add
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
 
+{"userId": "667", 
+ "product": {
+    "productId": "66891a418bddb3f5cb89fa8c",
+    "product_price": 150,
+    "product_quantity": 1,
+    "product_name": "Nike Air Max 9000",
+     "product_shopId ": "{{SHOPID}}"
+  }
+ }
+
+### get cart by user id
+GET http://localhost:3001/api/v1/cart/
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{"userId": "667"}
+
+### update product in cart
+PATCH http://localhost:3001/api/v1/cart/update
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{"userId": "667", 
+ "product": {
+    "productId": "66891a418bddb3f5cb89fa8c",
+    "product_price": 150,
+    "product_quantity": 2,
+    "product_name": "Nike Air Max 9000",
+     "product_shopId ": "{{SHOPID}}"
+  }
+ }
+
+### delete product in cart
+DELETE http://localhost:3001/api/v1/cart/delete
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{"userId": "667", 
+ "productId": "66891a418bddb3f5cb89fa8c"
+ }

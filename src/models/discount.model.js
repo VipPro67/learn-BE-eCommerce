@@ -71,7 +71,7 @@ const discountsSchema = new Schema(
     discount_apply_on: {
       type: String,
       required: true,
-      enum: ["all", "type", "product"],
+      enum: ["all", "products"],
     },
     discount_product_ids: {
       type: Array,

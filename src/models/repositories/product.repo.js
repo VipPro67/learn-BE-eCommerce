@@ -10,7 +10,11 @@ const {
 const { Types } = require("mongoose");
 const { BadRequestError } = require("../../core/error.response");
 const { update } = require("lodash");
-const { getSelectFields, getUnSelectFields } = require("../../utils");
+const {
+  getSelectFields,
+  getUnSelectFields,
+  convertToObjectId,
+} = require("../../utils");
 
 const findAllProducts = async ({ limit, sort, page, filter, select }) => {
   const query = {
@@ -124,6 +128,23 @@ const updateProductById = async ({
     }
   );
 };
+
+const checkProductByServer = async ({ products = [] }) => {
+  return await Promise.all(
+    products.map(async (product) => {
+      const foundProduct = await findProductById({
+        product_id: convertToObjectId(product.productId),
+      });
+      if (foundProduct) {
+        return {
+          price: foundProduct.product_price,
+          quantity: product.quantity,
+          productId: product.productId,
+        };
+      }
+    })
+  );
+};
 module.exports = {
   findAllDraftForShop,
   publicProductByShop,
@@ -133,4 +154,5 @@ module.exports = {
   findAllProducts,
   findProductById,
   updateProductById,
+  checkProductByServer,
 };

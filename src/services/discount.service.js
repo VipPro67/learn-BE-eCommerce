@@ -199,12 +199,10 @@ class DiscountService {
       throw new BadRequestError("Discount code is out of usage");
     }
     if (discount_max_usage_per_user > 0) {
-      let count = 0;
-      for (const user of discount_user_usage) {
-        if (user === userId) {
-          count++;
-        }
-      }
+      let count = discount_user_usage.reduce(
+        (acc, user) => (user === userId ? acc + 1 : acc),
+        0
+      );
       if (count >= discount_max_usage_per_user) {
         throw new BadRequestError("Discount code is out of usage for user");
       }
@@ -215,24 +213,82 @@ class DiscountService {
     ) {
       throw new BadRequestError("Discount code is expired");
     }
-    let totalOrder = 0;
-    for (const product of products) {
-      totalOrder += product.product_price * product.product_quantity;
-    }
+
+    const totalOrder = products.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+
     if (totalOrder < discount_min_order_value) {
       throw new BadRequestError("Discount code min order value is invalid");
     }
 
-    const amountDiscount =
+    // Check discount apply on products, type, all
+    if (
+      foundDiscount.discount_apply_on === "all" &&
+      discount_type === "fixed"
+    ) {
+      return {
+        totalOrder: totalOrder,
+        discountAmount: discount_value,
+        totalPrice: totalOrder - discount_value,
+      };
+    }
+    if (
+      foundDiscount.discount_apply_on === "all" &&
       discount_type === "percentage"
-        ? (discount_value / 100) * totalOrder
-        : discount_value;
+    ) {
+      const discountAmount = (totalOrder * discount_value) / 100;
+      return {
+        totalOrder: totalOrder,
+        discountAmount: discountAmount,
+        totalPrice: totalOrder - discountAmount,
+      };
+    }
 
-    return {
-      totalOrder: totalOrder,
-      discountAmount: amountDiscount,
-      totalPrice: totalOrder - amountDiscount,
-    };
+    if (
+      foundDiscount.discount_apply_on === "products" &&
+      discount_type === "fixed"
+    ) {
+      let totalOrderProduct = 0;
+      let discountAmount = 0;
+      for(let i = 0; i < products.length; i++) {
+        if (foundDiscount.discount_product_ids.includes(products[i].productId)) {
+          totalOrderProduct += products[i].price * products[i].quantity;
+          discountAmount += discount_value;
+        }
+        else {
+          totalOrderProduct += products[i].price * products[i].quantity;
+        }
+      }
+      return {
+        totalOrder: totalOrderProduct,
+        discountAmount: discount_value,
+        totalPrice: totalOrderProduct - discount_value,
+      };
+    }
+
+    if (
+      foundDiscount.discount_apply_on === "products" &&
+      discount_type === "percentage"
+    ) {
+      let totalOrderProduct = 0;
+      let discountAmount = 0;
+      for(let i = 0; i < products.length; i++) {
+        if (foundDiscount.discount_product_ids.includes(products[i].productId)) {
+          totalOrderProduct += products[i].price * products[i].quantity;
+          discountAmount += (products[i].price * products[i].quantity * discount_value) / 100;
+        }
+        else {
+          totalOrderProduct += products[i].price * products[i].quantity;
+        }
+      }
+      return {
+        totalOrder: totalOrderProduct,
+        discountAmount: discountAmount,
+        totalPriceAfterDiscount: totalOrderProduct - discountAmount,
+      };
+    }
   }
 
   static async cancelDiscountCode({ discount_code, shopId, userId }) {

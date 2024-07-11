@@ -1,9 +1,18 @@
-@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwNTAxOTU4LCJleHAiOjE3MjA1ODgzNTh9.sAYsnfSDqYO6n-ywHew-fJ1BQiz__R67xHALW8cvu4BuNXFg3cBYa0pAevgiOg8LYgvmQRpyzUUbcuqgTw6Rzw3IiadRnct8fgjSMUaFGeeRh_873uHHxUZXxOIC-MVGdjZ2d7SOViaImiN2pBh1j6NykNvGHiZs94dMvYPowqoS0cly7KWRqmEzISglqmmi5PvPcOyKxFK5Mqf_ZtAdW2Xs6n6r8TtN-486wKTqBBB0yg3EEdAPs8YOHB8Kisg3m4n34htGtEH9uuXAqu9FwXCBcRLmme5_ZcEyQsbj-GWjyrPhpS3u60JN-A0RKpgb6ShrujdMcPJKQwNPlPPoLkAzcdvfNER3G4FLQ_OGNl-egxY39RZWbLCLBtk9oLj61GuPWLwFwDwLsIF8DxWpEAK5zSttP5dVggtpBRpNkk_bNreHr8KPt9KrvOlJzG96BKgb3HcrTsLyzd7KymN5yQSSsWo3xgbPqAlLRuK647JDPfd5z-9kJQMKA4wL7Tl1KKJy4d8FZ061JM8rh_LUgl_e00bgBS32atPgc1BWIMFv3AHTjjIXjuRcpob2zFI60TRGKEWVxOfNFEKQTExoEdYWYNmxfAIBn8qhX6Ej6F9oBM0SKOXQ8WQxnfdJjHo-9oHsem_jVR71OXA3iDVEZW6NTyuFTF3Nmj60ox4m_bc
-@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjcxMjVjNzY0YzA4YWQ3NzU4ZWEiLCJlbWFpbCI6IjdAZ21haWwuY29tIiwiaWF0IjoxNzIwNTAxOTU4LCJleHAiOjE3MjE3MTE1NTh9.PqwF6vLz_GGeLJ6VlEAJGeVQjp0DzANttpAa4zCV6tqpoTKLYgF3HhDvYchteA82brzY2g_1ngXir1Pb2FxDImaAUq7sTa5T48UEsA7DRJJu1baUQmL-jq_UMZcCgmmjBzlQoPqw2xs9TALw1gE-tYp2ifwkY8cap0HpS3Z9wMIN3w0nCNJssI3dnX4ODokEKcRbIdRRiAKP3hkN2TrrITiZkAlf86SYtdNHhEnYZ_aW4ag-mivdx0teTk5uV5DoUkdRdjtUGZ3Gg0LdUD_I059YcR83VmB2QtGAh0hez_nFFHvKuUvPt8A2j4PawSThfFSdPF7Xh9P3MkW2jZ-bzriDUeHbCxErFO1P1QnPHTvNb8hNx9-nQe7sPVpGlkgpY4dypxh_qDJyTQsydqYoh1RFHpKvOGtgRho4wgf-gDI2b-1nWZDRmzNuJzDUN1oqOZ5MPH0fXkGmTqGBgA2UTZ7cm7EzWWfr3KxVN0cUwlwzJ2FN5phJz7mpve-xttpHrH7dtPQ7Zpje80RN0WcCDtJo5u_jgLie_TEBppcn_v81SH_Yu6J86_fLwxJLeHQ51QMyKHveIkp7m14c5WEM8MV4dFdiadXE6hnid1hIYEf2OoffhEEErwIgo0_LeWD0Vtq3WZcQMbEH3JqO-0uE11HIvhKeUwnjH9x8E3SfJvI
-
+@ACCESSTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjZkODg0YmU4MzRiYWEyODk3YjkiLCJlbWFpbCI6IjFAZ21haWwuY29tIiwiaWF0IjoxNzIwNzA4MDQxLCJleHAiOjE3MjA3OTQ0NDF9.lJQl2lgK-9C0U625H_4ThwCBbBTLd9R5iLKi10lD-vH39YoYY4G0L5_MipVLioYyt6NhbPIDzUu11sNLwDubWc5u_coBD-KYoZKMWyaWkCljgr0s1txSkMkU8CNtjoa__5v_p2QMctIXSGkDYlOktFAQnRGIquzN_YIpWf5Doq8X1GaEWLOf1gQ5vi-m3Qvwed95-2V4pxEcvGm2Wki1OLkC5weZoC_uK2_d5qlIMZ49rXwtmecPsxB-814_STflTBwOwLZYQkNHt7-cm4M5Q7TIH56wgcHBd_O4rsKq09pBREoknDMPGXtI7zMd5O5o9c6XnHEQrc49LbaVRVJbCkzpNocYsVZ7gJi9w1HwKhUQB07PXgr6TEopbGQhNTqCBrqitTeIND-CLQJja3JbeEYTx2IPPeEPTSKkygQ8I41BeJOa8JsZauDKId4UqZdpRKD_Sa1IKa7N6qHjb0YZKuZNVB43hyd8nN-Dp9qoh4hCfxeI1XD0BCKCilbGi0-Ttvh6mlFJSlfKDuKxjyOjaS1lTT656rBLbNWkzbwvwsVrJaqQeoD3VIGq9LJyaS7mHWhYhh3QWrrtjILhHC_dBJ3MtzXsjbPqsGxMqvIDsxUhoIlDEc_SR3cqdXqljlmaqL2nLH3y4gbHNBqEAPkvepAcn-dhJbicPU3Y2U7HlNk
+@REFRESHTOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjdhNjZkODg0YmU4MzRiYWEyODk3YjkiLCJlbWFpbCI6IjFAZ21haWwuY29tIiwiaWF0IjoxNzIwNzA4MDQxLCJleHAiOjE3MjE5MTc2NDF9.NTvoVnOPXP_JvEffXIJJ4JP5YRW-N759r_EnuIspu19WL7epoksVc_hSxZhfU77U3Wu6tIVpnqP3kcSJU1wxqCaIptypvew3T5YRs0e5s4mcyjgUXMIpqVJJMxGTjdgf80NI6Ilk7LJ5Bzw6o-naJKvZ-hKpZwDUgKQ3qCE5oad1bfBUOxz_4KEhK1ktyYOYe8WvwJlsUKBkGv4DbdNeCwMKyTD3lnXDuoCnlNTArBCGwbcsHXFzVC3ld1zeg6WKR8_A4gE_zR8dYnsiPgMXxTgAr1kmd94V_r3nDU4b4bBNUpw9C6fxP29RH7iATTpQ4pQDBx_bkdjpsVEhwrLJlhbElZK6AV1F9GvMe83hbnduTyWh_S3KhaBnDcwLvnIj--JHaAugfs6meCPOtIYytC2eKug8z3ZWUvGAlKbOgkSRh4vlCHan8CdY5qIhdyhmInWmr9pgfAKYX73C2NDyADT2sAiwRskb9C7j502Ga1QJX4y4jtLXCGDyKuxbzqjsw0mASpkl01IgadfeGsGqQ7FBTVaswGQFEL7v-cClvwzANUqojseH31yMeA4DteXUjVGhobHyc7ICEpQrTUAlC60XVnK1A1qXiM_BlNwyoMUeiFlOvaEC1fJp_-R3wUavB-g_7srjY8ANE7uiQUse-MecirmgMe04e2XHUE_wzsw
 @APIKEY = fffbff1907f9fd6c85428a77850851fcdb791963dc660f341d04d7829507e08efcb63ba8037b4e8c6f967e1e5dab3ae81cde008fb88969c0cd18a66a54df8cec
 
 @SHOPID = 667a67125c764c08ad7758ea
+
+@SHOPID2 = 667a66d884be834baa2897b9
+
+@PRODUCTID = 66891a418bddb3f5cb89fa8c
+
+@PRODUCTID2 = 66891a628bddb3f5cb89fa94
+
+@PRODUCTID3 = 66891a418bddb3f5cb89fa8c
+
+@DISCOUNTCODE = Birth2024
 ### Sign up
 x-api-key: {{APIKEY}}
 content-type: application/json
@@ -20,7 +29,7 @@ x-api-key: {{APIKEY}}
 content-type: application/json
 
 {
-    "email": "7@gmail.com",
+    "email": "1@gmail.com",
     "password": "1234156"
 }
 
@@ -41,8 +50,7 @@ content-type: application/json
 {
 "refreshToken": "{{REFRESHTOKEN}}"
 }
-
-### create product
+### create product 
 POST http://localhost:3001/api/v1/product
 x-api-key : {{APIKEY}}
 x-client-id : {{SHOPID}}
@@ -64,6 +72,53 @@ content-type: application/json
     "brand": "Gucci"
   }
 }
+
+### create product 2
+POST http://localhost:3001/api/v1/product
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID2}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "product_name": "Nike Air Max 9000",
+  "product_thumbnail": "https://example.com/nike-air-max-9000.jpg",
+  "product_shop": "{{SHOPID2}}",
+  "product_price": 120.00,
+  "product_quantity": 35,
+  "product_type": "clothes",
+  "product_description": "Nike Air Max 9000",
+  "product_attributes": {
+    "size": "US 9",
+    "color": "black",
+    "material": "leather",
+    "brand": "Nike"
+  }
+}
+
+### create product 3
+POST http://localhost:3001/api/v1/product
+x-api-key : {{APIKEY}} 
+x-client-id : {{SHOPID2}}
+authorization : {{ACCESSTOKEN}}
+Content-Type: application/json
+
+{
+  "product_name": "Jordan 1",
+  "product_thumbnail": "https://example.com/jordan-1.jpg",
+  "product_shop": "{{SHOPID2}}",
+  "product_price": 120.00,
+  "product_quantity": 35,
+  "product_type": "clothes",
+  "product_description": "Jordan 1",
+  "product_attributes": {
+    "size": "US 9",
+    "color": "black",
+    "material": "leather",
+    "brand": "Jordan"
+  }
+}
+
 
 ### get shop draft products
 GET http://localhost:3001/api/v1/product/draft/all
@@ -121,7 +176,7 @@ content-type: application/json
 ### create discount
 POST http://localhost:3001/api/v1/discount/create
 x-api-key : {{APIKEY}}
-x-client-id : {{SHOPID}}
+x-client-id : {{SHOPID2}}
 authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
@@ -132,8 +187,8 @@ content-type: application/json
   "discount_shop": "{{SHOPID}}",
   "discount_type": "percentage",
   "discount_value": 20,
-  "discount_apply_on": "product",
-  "discount_product_ids": ["66891a628bddb3f5cb89fa94","66891a418bddb3f5cb89fa8c"],
+  "discount_apply_on": "products",
+  "discount_product_ids": ["668fec8e052f68d2c7031245"],
   "discount_min_order_value": 100,
   "discount_max_usage": 100,
   "discount_start_date": "2024-07-01",
@@ -197,7 +252,7 @@ content-type: application/json
 ### add product to cart
 POST http://localhost:3001/api/v1/cart/add
 x-api-key : {{APIKEY}}
-x-client-id : {{SHOPID}}
+x-client-id : {{SHOPID2}}
 authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
@@ -244,6 +299,58 @@ x-client-id : {{SHOPID}}
 authorization : {{ACCESSTOKEN}}
 content-type: application/json
 
-{"userId": "667", 
+{
+ "userId": "667", 
  "productId": "66891a418bddb3f5cb89fa8c"
- }
+}
+
+
+### review checkout
+POST http://localhost:3001/api/v1/checkout/review
+x-api-key : {{APIKEY}}
+x-client-id : {{SHOPID2}}
+authorization : {{ACCESSTOKEN}}
+content-type: application/json
+
+{
+  "cartId": "668d3bd10a9c61046dc2fdfa",
+  "userId": "667", 
+  "shop_order_ids": [
+    {
+      "shopId": "{{SHOPID}}",
+      "shopDiscounts": [],
+      "itemProducts": [
+        {
+          "productId": "66891a418bddb3f5cb89fa8c",
+          "price": 150,
+          "quantity": 2,
+          "name": "Guchi Bag"
+        }
+      ]
+    },
+    {
+      "shopId": "{{SHOPID2}}",
+      "shopDiscounts": [
+        {
+          "shopId": "{{SHOPID2}}",
+          "discountId": "668fecb0052f68d2c7031250",  
+          "discountCode": "Birth2024"
+        }
+      ],
+      "itemProducts": [
+        {
+          "productId": "668fec05052f68d2c703123b",
+          "price": 150,
+          "quantity": 2,
+          "name": "Nike Air Max 9000"
+        },
+        {
+          "productId": "668fec8e052f68d2c7031245",
+          "price": 150,
+          "quantity": 2,
+          "name": "Jordan 1"
+        }
+      ]
+    }
+  ]
+}

@@ -2,9 +2,13 @@
 const { cart } = require("../cart.model");
 const { Types } = require("mongoose");
 const { BadRequestError } = require("../../core/error.response");
-const { getSelectFields, getUnSelectFields } = require("../../utils");
+const {
+  getSelectFields,
+  getUnSelectFields,
+  convertToObjectId,
+} = require("../../utils");
 
-const wcreateCart = async ({ userId, products = [] }) => {
+const createCart = async ({ userId, products = [] }) => {
   const query = { cart_userId: userId, cart_status: "active" },
     updateOrInsert = {
       $addToSet: { cart_products: { $each: products } },
@@ -16,7 +20,10 @@ const wcreateCart = async ({ userId, products = [] }) => {
 };
 
 const getCartById = async ({ cartId }) => {
-  return await cart.findOne({ _id: cartId });
+  return await cart.findOne({
+    _id: cartId,
+    cart_status: "active",
+  });
 };
 
 const getCartByUserId = async ({ userId }) => {

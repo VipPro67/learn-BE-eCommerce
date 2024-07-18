@@ -1,7 +1,10 @@
 "use strict";
 const express = require("express");
 const { apiKey, permission } = require("../auth/checkAuth");
+const { sendMessage, sendFormatLog } = require("../middlewares");
 const router = express.Router();
+
+router.use(sendFormatLog);
 
 //check apiKey
 router.use(apiKey);

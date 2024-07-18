@@ -6,5 +6,5 @@ const { asyncHandler } = require("../../auth/checkAuth");
 const { authenticateToken } = require("../../auth/authUtils");
 
 router.use(authenticateToken);
-post("", asyncHandler(InventoryController.addStock));
+router.post("", asyncHandler(InventoryController.addStock));
 module.exports = router;

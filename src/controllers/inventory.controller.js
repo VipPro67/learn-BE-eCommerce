@@ -1,6 +1,6 @@
 'use strict'
 const InventoryService = require("../services/inventory.service");
-const {OK, CREATED} = require("../core/http.response");
+const {OK, CREATED} = require("../core/success.response");
 const {BadRequestError} = require("../core/error.response");
 
 class InventoryController {

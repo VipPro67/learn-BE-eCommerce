@@ -116,7 +116,6 @@ class CheckoutService {
     }
   }
 
-
   static async getOrderByUser({ userId }) {
     return await order.find({ order_userId: userId });
   }
@@ -125,9 +124,43 @@ class CheckoutService {
     return await order.findById(orderId);
   }
 
-  static async cancelOrderByUser({ orderId }) {}
+  static async cancelOrderByUser({ orderId }) {
+    const foundOrder = await order.findById(orderId);
+    if (!foundOrder) {
+      throw new NotFoundError("Error: Order not found", orderId);
+    }
+    if (foundOrder.order_status === "cancel") {
+      throw new BadRequestError("Error: Order already cancel", orderId);
+    }
+    const updateOrder = await order.findByIdAndUpdate(
+      orderId,
+      { order_status: "cancel" },
+      { new: true }
+    );
+    if (!updateOrder) {
+      throw new BadRequestError("Error: Order cancel fail", orderId);
+    }
+    return updateOrder;
+  }
 
-  static async updateOrderByShop({ orderId, status }) {}
+  static async updateOrderByShop({ orderId, status }) {
+    const foundOrder = await order.findById(orderId);
+    if (!foundOrder) {
+      throw new NotFoundError("Error: Order not found", orderId);
+    }
+    if (foundOrder.order_status === status) {
+      throw new BadRequestError("Error: Order already " + status, orderId);
+    }
+    const updateOrder = await order.findByIdAndUpdate(
+      orderId,
+      { order_status: status },
+      { new: true }
+    );
+    if (!updateOrder) {
+      throw new BadRequestError("Error: Order update fail", orderId);
+    }
+    return updateOrder;
+  }
 }
 
 module.exports = CheckoutService;

@@ -6,7 +6,8 @@ const LoggerService = require("../loggers/discord.log.js");
 const sendMessage = async (req, res, next) => {
   try {
     LoggerService.sendMessage("Test message");
-    res.status(200).json({ message: "Message sent to Discord" });
+    // res.status(200).json({ message: "Message sent to Discord" });
+    next();
   } catch (error) {
     next(error);
   }
@@ -19,7 +20,8 @@ const sendFormatLog = async (req, res, next) => {
       method: req.method,
       message: req.body,
     });
-    res.status(200).json({ message: "Message sent to Discord" });
+    // res.status(200).json({ message: "Message sent to Discord" });
+    next();
   } catch (error) {
     next(error);
   }

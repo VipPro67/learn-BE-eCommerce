@@ -18,5 +18,6 @@ router.use("/api/v1/cart", require("./cart"));
 router.use("/api/v1/checkout", require("./checkout"));
 router.use("/api/v1/inventory", require("./inventory"));
 router.use("/api/v1/comment", require("./comment"));
+router.use("/api/v1/notification", require("./notification"));
 
 module.exports = router;

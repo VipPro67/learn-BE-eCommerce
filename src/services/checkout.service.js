@@ -112,8 +112,32 @@ class CheckoutService {
       order_products: new_shop_order_ids,
     });
     if (newOrder) {
-      //remove product from cart
+      //update status cart
+      await updateCartById({
+        cartId: convertToObjectId(cartId),
+        bodyUpdate: { cart_status: "order" },
+      });
+
+      //update inventory
+      for (let i = 0; i < products.length; i++) {
+        const { productId, quantity } = products[i];
+        await reservationInventory({
+          productId,
+          quantity,
+          cartId,
+        });
+
+        //push notification
+        NotificationService.pushNotiToSystem({
+          type: "ORDER",
+          senderId: userId,
+          receiverId: products[i].shopId,
+          options: { orderId: newOrder._id, orderName: newOrder.order_name },
+        });
+      }
     }
+
+    return newOrder;
   }
 
   static async getOrderByUser({ userId }) {

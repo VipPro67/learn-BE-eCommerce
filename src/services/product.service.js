@@ -22,6 +22,7 @@ const {
 } = require("../models/repositories/product.repo");
 const { remove } = require("lodash");
 const { insertInventory } = require("../models/repositories/inventory.repo");
+const NotificationService = require("./notification.service");
 
 class ProductFactory {
   static getProductClass(type) {
@@ -101,7 +102,13 @@ class ProductFactory {
       sort,
       page,
       filter,
-      select: ["product_name", "product_thumbnail", "product_price", "product_type", "product_shop"],
+      select: [
+        "product_name",
+        "product_thumbnail",
+        "product_price",
+        "product_type",
+        "product_shop",
+      ],
     });
   }
 
@@ -145,6 +152,13 @@ class Product {
         productId: product_id,
         shopId: this.product_shop,
         stock: this.product_quantity,
+      });
+      NotificationService.pushNotiToSystem({
+        type: "PRODUCT",
+        senderId: this.product_shop,
+        // receiverId: this.product_shop, list user follow shop
+        receiverId: 1,
+        options: { productId: product_id, productName: this.product_name },
       });
     }
     return newProduct;

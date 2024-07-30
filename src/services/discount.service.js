@@ -15,6 +15,7 @@ const {
 } = require("../models/repositories/discount.repo");
 
 const { findAllProducts } = require("../models/repositories/product.repo");
+const NotificationService = require("./notification.service");
 
 /*
 1. gerenate a discount code by shop or admin
@@ -61,6 +62,12 @@ class DiscountService {
     if (foundDiscount) {
       throw new BadRequestError("Discount code already exists");
     }
+    NotificationService.pushNotiToSystem({
+      type: "PROMOTION",
+      senderId: discount_shopId,
+      receiverId: discount_shopId,
+      options: { promotionName: discount_name },
+    });
     return await createDiscount({
       discount_name: discount_name,
       discount_description: discount_description,
@@ -252,12 +259,13 @@ class DiscountService {
     ) {
       let totalOrderProduct = 0;
       let discountAmount = 0;
-      for(let i = 0; i < products.length; i++) {
-        if (foundDiscount.discount_product_ids.includes(products[i].productId)) {
+      for (let i = 0; i < products.length; i++) {
+        if (
+          foundDiscount.discount_product_ids.includes(products[i].productId)
+        ) {
           totalOrderProduct += products[i].price * products[i].quantity;
           discountAmount += discount_value;
-        }
-        else {
+        } else {
           totalOrderProduct += products[i].price * products[i].quantity;
         }
       }
@@ -274,12 +282,14 @@ class DiscountService {
     ) {
       let totalOrderProduct = 0;
       let discountAmount = 0;
-      for(let i = 0; i < products.length; i++) {
-        if (foundDiscount.discount_product_ids.includes(products[i].productId)) {
+      for (let i = 0; i < products.length; i++) {
+        if (
+          foundDiscount.discount_product_ids.includes(products[i].productId)
+        ) {
           totalOrderProduct += products[i].price * products[i].quantity;
-          discountAmount += (products[i].price * products[i].quantity * discount_value) / 100;
-        }
-        else {
+          discountAmount +=
+            (products[i].price * products[i].quantity * discount_value) / 100;
+        } else {
           totalOrderProduct += products[i].price * products[i].quantity;
         }
       }

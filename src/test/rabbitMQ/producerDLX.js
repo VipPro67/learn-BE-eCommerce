@@ -1,6 +1,5 @@
 const amqp = require("amqplib");
 const { set } = require("lodash");
-const message = { message: "Hello RabbitMQ user " };
 
 const log = console.log;
 
@@ -36,7 +35,7 @@ const runProducer = async () => {
   );
 
   const msg = {
-    message: "Hello RabbitMQ user",
+    message: "Hello RabbitMQ user 1",
   };
 
   console.log("Sending message to notification exchange");

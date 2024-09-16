@@ -1,33 +1,59 @@
-"use strict";
-
-const { uploadImageFromURL,uploadFileFromLocal } = require("../services/upload.service");
+const {
+  uploadFilesFromURL,
+  uploadFilesFromLocal,
+  uploadFilesLocalToS3,
+} = require("../services/upload.service");
 const { OK } = require("../core/success.response");
 const { BadRequestError } = require("../core/error.response");
 
 class UploadController {
-  async uploadFile(req, res, next) {
+  async uploadFilesToCloudinary(req, res, next) {
     try {
-      const result = await uploadImageFromURL({
-        imageUrl: req.body.fileUrl,
-        type: req.body.type,
-        name: req.body.name,
-      });
-      new OK("Upload file success", result).send(res);
+      const files = req.body.files || []; // Assuming an array of URLs for multiple uploads
+      const results = await Promise.all(
+        files.map(async (file) => {
+          return await uploadFilesFromURL({
+            fileUrl: file.url,
+            type: file.type,
+            name: file.name,
+          });
+        })
+      );
+      new OK("Upload files success", results).send(res);
     } catch (error) {
       next(error);
     }
   }
 
-  async uploadFileFromLocal(req, res, next) {
+  async uploadFilesFromLocalToCloudinary(req, res, next) {
     try {
-      if (!req.file) {
-        throw new BadRequestError("Error: Missing file");
+      if (!req.files || req.files.length === 0) {
+        throw new BadRequestError("Error: No files uploaded");
       }
 
-      const result = await uploadFileFromLocal({
-        file: req.file,
-      });
-      new OK("Upload file success", result).send(res);
+      const results = await Promise.all(
+        req.files.map(async (file) => {
+          return await uploadFilesFromLocal({ file });
+        })
+      );
+      new OK("Upload files success", results).send(res);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async uploadFilesFromLocalToS3(req, res, next) {
+    try {
+      if (!req.files || req.files.length === 0) {
+        throw new BadRequestError("Error: No files uploaded");
+      }
+
+      const results = await Promise.all(
+        req.files.map(async (file) => {
+          return await uploadFilesLocalToS3({ file });
+        })
+      );
+      new OK("Upload files success", results).send(res);
     } catch (error) {
       next(error);
     }

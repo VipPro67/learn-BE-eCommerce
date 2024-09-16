@@ -18,6 +18,12 @@ const uploadDisk = multer({
     },
   }),
 });
+
+const uploadMemory = multer({
+  storage: multer.memoryStorage(),
+});
+
 module.exports = {
   uploadDisk,
+  uploadMemory,
 };

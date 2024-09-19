@@ -1,29 +1,35 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
-    runs-on: seft-hosted
+    # Ensure you target the correct self-hosted runner
+    runs-on: [self-hosted, linux, x64]
 
     strategy:
       matrix:
-        node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.x] # You can add more versions here if needed
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
+      # Checkout the repository
+      - uses: actions/checkout@v4
+
+      # Set up Node.js with caching for npm dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      # Install dependencies using npm ci (faster and more reliable for CI environments)
+      - name: Install dependencies
+        run: npm ci
+
+      # Optional: Build your project if needed (add this step if you have a build process)
+      - name: start
+        run: npm start

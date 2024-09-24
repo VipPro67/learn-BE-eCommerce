@@ -30,6 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # add .env file for environment variables
+      
+
+
       # Optional: Build your project if needed (add this step if you have a build process)
       - name: start
         run: npm start

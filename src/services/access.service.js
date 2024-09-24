@@ -1,6 +1,5 @@
 "use strict";
 
-const shopModel = require("../models/shop.model");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const KeyTokenService = require("./keyToken.service");
@@ -68,7 +67,7 @@ class AccessService {
 
   static signUp = async ({ name, email, password }) => {
     try {
-      const holderShop = await shopModel.findOne({ email }).lean();
+      const holderShop = await findShopByEmail({ email });
       if (holderShop) {
         throw new BadRequestError("Error: Email already registered");
       }

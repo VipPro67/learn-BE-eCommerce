@@ -1,12 +1,11 @@
 "use strict";
-const { verify } = require("crypto");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DOCUMENT_NAME = "Shop";
 const COLLECTION_NAME = "shops";
 
-var shopSchema = new mongoose.Schema(
+const shopSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -29,11 +28,11 @@ var shopSchema = new mongoose.Schema(
       default: "inactive",
     },
     verify: {
-      type: Schema.Types.Boolean,
+      type: Boolean,
       default: false,
     },
     roles: {
-      type: Array,
+      type: [String],
       default: [],
     },
   },
@@ -42,4 +41,5 @@ var shopSchema = new mongoose.Schema(
     collection: COLLECTION_NAME,
   }
 );
+
 module.exports = mongoose.model(DOCUMENT_NAME, shopSchema);

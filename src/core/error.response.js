@@ -1,4 +1,6 @@
 "use strict";
+const myLogger = require("../loggers/myLoger");
+
 
 const StatusCode = {
   FOBIDDEN: 403,
@@ -20,6 +22,13 @@ class ErrorResponse extends Error {
   constructor(message, statusCode) {
     super(message);
     this.statusCode = statusCode;
+
+    myLogger.error(message, {
+      context : '/path',
+      requestId: '1234',
+      message: message,
+      metadata: { statusCode },
+    });
   }
 }
 class ConflicRequestError extends ErrorResponse {

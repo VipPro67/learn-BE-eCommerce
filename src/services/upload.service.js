@@ -21,7 +21,7 @@ const uploadFilesFromURL = async ({ fileUrl, type, name }) => {
     };
   } catch (error) {
     throw new Error("Upload failed from URL");
-  }
+  } 
 };
 
 const uploadFilesFromLocal = async ({ file }) => {

@@ -38,7 +38,9 @@ const updateNestedObject = (object) => {
 const convertToObjectId = (id) => {
   return new Types.ObjectId(id);
 };
-
+const randomProductId = () => {
+  return Math.floor(Math.random() * 899999 + 100000);
+};
 
 module.exports = {
   getInfoData,
@@ -47,4 +49,5 @@ module.exports = {
   removeUndefined,
   updateNestedObject,
   convertToObjectId,
+  randomProductId,
 };

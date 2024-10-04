@@ -9,7 +9,8 @@ router.get(
   "/search/:keysearch",
   asyncHandler(ProductController.searchProductsUser)
 );
-
+router.get("/sku/select_variation", asyncHandler(ProductController.findOneSku));
+router.get("/spu/get_spu_info", asyncHandler(ProductController.findOneSpu));
 router.get("/all", asyncHandler(ProductController.findAllProducts));
 
 router.get("/:product_id", asyncHandler(ProductController.findProductById));
@@ -27,6 +28,7 @@ router.post(
   "/unpublished/:product_id",
   asyncHandler(ProductController.unPublicProductByShop)
 );
+router.post("/spu/new", asyncHandler(ProductController.createSpu));
 router.get(
   "/published/all",
   asyncHandler(ProductController.getAllPublicProductByShop)

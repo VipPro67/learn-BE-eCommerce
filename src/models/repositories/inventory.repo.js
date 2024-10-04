@@ -2,7 +2,6 @@
 const { inventory } = require("../inventory.model");
 const { Types } = require("mongoose");
 const { convertToObjectId } = require("../../utils");
-const { create } = require("lodash");
 
 const insertInventory = async ({
   productId,

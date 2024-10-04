@@ -1,5 +1,5 @@
 "use strict";
-const { SuccessResponse } = require("../core/success.response");
+const { OK } = require("../core/success.response");
 const { use } = require("../routes");
 
 const profiles = [
@@ -23,7 +23,7 @@ const profiles = [
 class ProfileController {
   // Admin view all profiles
   async profiles(req, res, next) {
-    new SuccessResponse({
+    new OK({
       message: "View all profiles",
       metadata: profiles,
     }).send(res);
@@ -39,7 +39,7 @@ class ProfileController {
       return res.status(404).json({ message: "Profile not found" });
     }
 
-    new SuccessResponse({
+    new OK({
       message: "View own profile",
       metadata: profile,
     }).send(res);

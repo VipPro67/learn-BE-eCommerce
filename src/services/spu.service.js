@@ -1,9 +1,10 @@
-'use strict';
-const { spuModel } = require("../models/spu.model");
-const { newSku, allSkuBySpuId } = require("./sku.service");
-const { findShopById } = require("./shop.service");
-const { randomProductId } = require("../utils");
+"use strict";
+
 const { NotFoundError } = require("../core/error.response");
+const { findShopById } = require("../models/repositories/shop.repo");
+const spuModel = require("../models/spu.model");
+const { randomProductId } = require("../utils");
+const { newSku, findAllSkusBySpu } = require("./sku.service");
 const _ = require("lodash");
 
 const newSpu = async ({
@@ -11,7 +12,6 @@ const newSpu = async ({
   product_name,
   product_thumb,
   product_description,
-  product_slug,
   product_price,
   product_category,
   product_shop,
@@ -21,59 +21,56 @@ const newSpu = async ({
   sku_list = [],
 }) => {
   try {
-    // 1. check if Shop exists
-
-    // const foundShop = await findShopById({ shop_id: product_shop });
-    // console.log(foundShop);
-
-    // if (!foundShop) throw new NotFoundError(`Shop not found`);
-
+    // 1. check if shop exists
+    const foundShop = await findShopById({ shopId: product_shop });
+    if (!foundShop) throw new NotFoundError("Shop not found");
     // 2. create a new SPU
     const spu = await spuModel.create({
       product_id: randomProductId(),
       product_name,
       product_thumb,
       product_description,
-      product_slug,
       product_price,
       product_category,
-      product_shop,
+      product_shop: foundShop._id,
       product_attributes,
       product_quantity,
       product_variations,
     });
-    // 3 get spu_id add to sku.service
-    if (spu && sku_list.length > 0) {
-      // 3. create skus
+
+    // 3. get spu_id add to sku service
+    if (spu && sku_list.length) {
+      // create skus
       newSku({ sku_list, spu_id: spu.product_id }).then();
     }
-    // 4. sync data via elasticsearch (search.service)
-    // 5. respond result object
 
+    // 4. sync data via elasticsearch (search.service)
+
+    // 5. return the created SPU
     return !!spu;
   } catch (error) {
-    console.error(`newSpu Error: ${error}`);
     throw error;
   }
 };
 
-const oneSpu = async ({ spu_id }) => {
+const findOneSpu = async ({ spu_id }) => {
   try {
-    const spu = await SpuModel.findOne({
+    const spu = await spuModel.findOne({
       product_id: spu_id,
-      isPublished: false, // true
+      isPublished: true,
     });
-    if (!spu) throw new NotFoundError("spu is not found");
-    const skus = await allSkuBySpuId({ product_id: spu.product_id });
+    if (!spu) throw new NotFoundError("SPU not found");
+    const skus = await findAllSkusBySpu({ product_id: spu.product_id });
     return {
-      spu_info: _.omit(spu, ["__v", "updatedAt"]),
-      sku_list: skus.map((sku) =>
-        _.omit(sku, ["__v", "updatedAt", "createdAt", "isDeleted"])
-      ),
+      spu_info: _.omit(spu, ["__v", "updatedAt", "createdAt", "isDeleted"]),
+      sku_list: skus,
     };
   } catch (error) {
-    return {};
+    throw error;
   }
 };
 
-module.exports = { newSpu, oneSpu };
+module.exports = {
+  newSpu,
+  findOneSpu,
+};

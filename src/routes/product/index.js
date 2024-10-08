@@ -4,6 +4,8 @@ const router = express.Router();
 const ProductController = require("../../controllers/product.controller");
 const { asyncHandler } = require("../../auth/checkAuth");
 const { authenticateToken } = require("../../auth/authUtils");
+const { readCache } = require("../../middlewares/cache.middleware");
+const { validateProductQuery } = require("../../validations/product.validation");
 
 router.get(
   "/search/:keysearch",
@@ -11,6 +13,13 @@ router.get(
 );
 router.get("/sku/select_variation", asyncHandler(ProductController.findOneSku));
 router.get("/spu/get_spu_info", asyncHandler(ProductController.findOneSpu));
+router.get(
+  "/sku/select_variation",
+  validateProductQuery,
+  readCache,
+  asyncHandler(ProductController.findOneSku)
+);
+
 router.get("/all", asyncHandler(ProductController.findAllProducts));
 
 router.get("/:product_id", asyncHandler(ProductController.findProductById));

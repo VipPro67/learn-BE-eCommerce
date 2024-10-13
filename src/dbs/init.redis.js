@@ -1,6 +1,22 @@
 "use strict";
+
 const redis = require("redis");
 const { RedisError } = require("../core/error.response");
+
+// // create a new client redis
+// const client = redis.createClient({
+//   host,
+//   port,
+//   username,
+//   password
+// })
+
+// client.on('error', (err) => {
+//   console.error(`Error connecting to Redis: ${err}`)
+// })
+
+// module.exports = client
+
 let client = {},
   connectRedisStatus = {
     CONNECT: "connect",
@@ -47,7 +63,8 @@ const handleEventConnection = ({ connectionRedis }) => {
 
   connectionRedis.on(connectRedisStatus.ERROR, (err) => {
     console.log(`connectionRedis - Connection status: error ${err}`);
-    clearTimeout(connectionTimeout); 
+    clearTimeout(connectionTimeout); // Clear any timeout that might be pending
+    // retry connecting
     handleTimeoutError();
   });
 };
